@@ -1,9 +1,10 @@
 function greet(name) {
-  return `hello, ${name}!`;
+    return `Hello, ${name}!`;
 }
 
 module.exports = greet;
 
 if (require.main === module) {
-  console.log(greet("world"));
+    const name = process.argv[2] || 'World';
+    console.log(greet(name));
 }
