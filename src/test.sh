@@ -1,9 +1,14 @@
 #!/bin/bash
 
-# Run greet.js with Node.js
-node greet.js
+# src/test.sh
+EXPECTED="Hello, Test!"
 
-# Optional: test multiple names
-echo $(node -e "const greet = require('./greet'); console.log(greet('Omar'))")
-echo $(node -e "const greet = require('./greet'); console.log(greet('Alice'))")
-echo $(node -e "const greet = require('./greet'); console.log(greet('Bob'))")
+OUTPUT=$(node -e "console.log(require('./src/app')('Test'))")
+
+if [ "$OUTPUT" == "$EXPECTED" ]; then
+    echo "✅ Test passed!"
+    exit 0
+else
+    echo "✕ Test failed! Expected '$EXPECTED' but got '$OUTPUT'"
+    exit 1
+fi
